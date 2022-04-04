@@ -1,0 +1,14 @@
+{
+  "name": "php_carcrash",
+  "version": "1.0.0",
+  "description": "Stage 2 DigiTech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "scss": "^0.2.4"
+  }
+}
