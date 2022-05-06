@@ -4,11 +4,12 @@
   "description": "Stage 2 DigiTech",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "sass --watch ./src/main.scss ./public/main.css",
+    "build": "sass ./src/main.scss ./public/main.css && scp -r ./public/ ebessen@webhost1.concordia.sa.edu.au:~/www/"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "scss": "^0.2.4"
+    "sass": "^1.49.11"
   }
 }
