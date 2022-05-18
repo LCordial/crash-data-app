@@ -1,8 +1,8 @@
 <?php
-    include("connect.php");
+    include("../connect.php");
 
-    // Getting the suburb
-    $sql = "select * from task3_location";
+    // Getting the crashtype
+    $sql = "select * from task3_crashtype";
 
     $result = mysqli_query($conn, $sql);
 

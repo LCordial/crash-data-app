@@ -3,7 +3,7 @@
 // This one gets CSEF Sev
 $(document).ready(function(){
     $.ajax({
-        url: 'csef.php',
+        url: './php/csef.php',
         method: 'POST',
         dataType: 'JSON',
         success:function(data){
@@ -18,7 +18,7 @@ $(document).ready(function(){
 // This one gets CrashType
 $(document).ready(function(){
     $.ajax({
-        url: 'crashtype.php',
+        url: './php/crashtype.php',
         method: 'POST',
         dataType: 'JSON',
         success:function(data){
@@ -33,7 +33,7 @@ $(document).ready(function(){
 // This one gets the location
 $(document).ready(function(){
     $.ajax({
-        url: 'suburb.php',
+        url: './php/suburb.php',
         method: 'POST',
         dataType: 'JSON',
         success:function(data){

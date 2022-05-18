@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Crash Data DB | Dashboard</title>
+        <link rel="stylesheet" href="./style/bootstrap.css"/>
+        <link rel="stylesheet" href="./style/main.css">
+        <meta name="description" content="My Portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <meta charSet="UTF-8" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="./modules/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    </head>
+    <body>
+        <div id="page">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Return Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./bulk.html">View Table</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="contents">
+                <!-- https://palx.jxnblk.com/ :) -->
+                <div id="leftpanel">
+                    <div id="totalcastoday">
+                        <h2>Total Casualties Today</h2>
+                    </div>
+                    <div id="highestsuburb">
+                        <h2>Worst Suburb Today</h2>
+                        <p>[Enter Number]</p>
+                    </div>
+                    <div id="highestmonth">
+                        <h2>Worst Month</h2>
+                        <p>[Enter Number]</p>
+                    </div>
+                    <div id="highestday">
+                        <h2>Worst Day</h2>
+                        <p>[Enter Number]</p>
+                    </div>
+                </div>
+                <figure style="width: 50%;">
+                    <div id="container"></div>
+                </figure>
+            </div>
+        </div>
+    </body>
+    <scirpt src="./modules/highcharts.js"></scirpt>
+    <script src="./dashboard.js"></script>
+</html>

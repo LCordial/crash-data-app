@@ -1,8 +1,8 @@
 <?php
-    include("connect.php");
+    include("../connect.php");
 
-    // Getting the csef
-    $sql = "select * from task3_csefsev";
+    // Getting the suburb
+    $sql = "select * from task3_location";
 
     $result = mysqli_query($conn, $sql);
 

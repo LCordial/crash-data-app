@@ -1,0 +1,29 @@
+#leftpanel{
+    display: inline-flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+#totalcastoday{
+    display: inline-block;
+    padding: 1.4rem;
+    background-color: #5aa7de
+}
+
+#highestsuburb{
+    display: inline-block;
+    padding: 1.4rem;
+    background-color: #7dbae5
+}
+
+#highestmonth{
+    display: inline-block;
+    padding: 1.4rem;
+    background-color: #9bcaeb
+}
+
+#highestday{
+    display: inline-block;
+    padding: 1.4rem;
+    background-color: #b5d8f0;
+}

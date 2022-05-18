@@ -1,8 +1,8 @@
 <?php
-    include("connect.php");
+    include("../connect.php");
 
-    // Getting the crashtype
-    $sql = "select * from task3_crashtype";
+    // Getting the csef
+    $sql = "select * from task3_csefsev";
 
     $result = mysqli_query($conn, $sql);
 
