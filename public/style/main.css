@@ -27,3 +27,19 @@
     padding: 1.4rem;
     background-color: #b5d8f0;
 }
+
+#other{
+    display: inline-block;
+    padding: 1.4rem;
+    background-color: #cce4f5;
+}
+
+#page{
+    height: 100vh;
+    overflow: hidden;
+}
+
+#contents{
+    display: flex;
+    flex-direction: row;
+}
