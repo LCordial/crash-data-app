@@ -1,4 +1,7 @@
 var chart;
+var array = [];
+
+
 
 $(document).ready(function(){
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -37,17 +40,40 @@ function updateTotalCas(){
             success: function(result){
                 console.log(result);
                 for(var i = 0; i < result.length; i++){
-                    let data = result[i].replace(/\\/g, "");
-                    console.log(data);
-                }
-            },
+                    if(result[i][0] === 'Friday'){
+                        chart.series[0].data[4].y = parseInt(result[i][1]);
+                        chart.redraw();
+                    } else if (result[i][0] === 'Monday'){
+                        chart.series[0].data[0].y = parseInt(result[i][1]);
+                        chart.redraw();
+                    } else if (result[i][0] === 'Saturday'){
+                        chart.series[0].data[5].y = parseInt(result[i][1]);   
+                        chart.redraw();               
+                    } else if (result[i][0] === 'Sunday'){
+                        chart.series[0].data[6].y = parseInt(result[i][1]);       
+                        chart.redraw();            
+                    } else if (result[i][0] === 'Thursday'){
+                        chart.series[0].data[3].y = parseInt(result[i][1]); 
+                        chart.redraw();
+                    } else if (result[i][0] === 'Tuesday'){
+                        chart.series[0].data[1].y = parseInt(result[i][1]);
+                        chart.redraw();
+                    } else if (result[i][0] === 'Wednesday'){
+                        chart.series[0].data[2].y = parseInt(result[i][1]);
+                        chart.redraw();
+                    } else {
+                        console.log("Cannot find array value");
+                    }
+            }
+            console.log("Finished loop");
+        },
             error: function(data){
                 console.log("ERROR!:", data.responseText);
             }
         });
 }
-
 $(document).ready(function () {
+    console.log("Loading Chart")
     chart = new Highcharts.Chart({
         chart: {
         renderTo: "container",
@@ -73,7 +99,9 @@ $(document).ready(function () {
         yAxis: {
         title: {
             text: 'Total Cas'
-        }
+        },
+        min: 0,
+        max: 20,
         },
         credits: {
             enabled: false
@@ -83,47 +111,43 @@ $(document).ready(function () {
         },
         plotOptions: {
             series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                }
             }
         },
         series: [
-            
             {
-                name: "Monday",
-                data: [],
-            },
-            {
-                name: "Tuesday",
-                data: [],
-            },
-            {
-                name: "Wednesday",
-                data: [],
-            },
-            {
-                name: "Thursday",
-                data: [],
-            },
-            {
-                name: "Friday",
-                data: [],
-            },
-            {
-                name: "Saturday",
-                data: [],
-            },
-            {
-                name: "Sunday",
-                data: [],
+                name: "Days",
+                colorByPoint: true,
+                data: [
+                    {
+                        name: "Monday",
+                        y: 0,
+                    },
+                    {
+                        name: "Tuesday",
+                        y: 0,
+                    },
+                    {
+                        name: "Wednesday",
+                        y: 0,
+                    },
+                    {
+                        name: "Thursday",
+                        y: 0,
+                    },
+                    {
+                        name: "Friday",
+                        y: 0,
+                    },
+                    {
+                        name: "Saturday",
+                        y: 0,
+                    },
+                    {
+                        name: "Sunday",
+                        y: 0,
+                    }
+                ]
             }
-                
-        
-        ],
-        
+        ]
     });
 });
-
-
