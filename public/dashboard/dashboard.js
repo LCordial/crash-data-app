@@ -1,7 +1,6 @@
 var chart;
+var timechart;
 var array = [];
-
-
 
 $(document).ready(function(){
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -32,6 +31,23 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $.ajax({
+        type: "POST",
+        url: "./dashboard/worstmonth.php",
+        dataType: 'json',
+        success: function(data){
+            console.log("Months: ", data);
+            for(var i=0; i < data.length; i++){
+                
+            }
+        },
+        error: function(error){
+            console.log(error.responseText);
+        }
+    })
+})
+
 function updateTotalCas(){
         $.ajax({
             type: "POST",
@@ -40,30 +56,32 @@ function updateTotalCas(){
             success: function(result){
                 console.log(result);
                 for(var i = 0; i < result.length; i++){
-                    if(result[i][0] === 'Friday'){
-                        chart.series[0].data[4].y = parseInt(result[i][1]);
-                        chart.redraw();
-                    } else if (result[i][0] === 'Monday'){
-                        chart.series[0].data[0].y = parseInt(result[i][1]);
-                        chart.redraw();
-                    } else if (result[i][0] === 'Saturday'){
-                        chart.series[0].data[5].y = parseInt(result[i][1]);   
-                        chart.redraw();               
-                    } else if (result[i][0] === 'Sunday'){
-                        chart.series[0].data[6].y = parseInt(result[i][1]);       
-                        chart.redraw();            
-                    } else if (result[i][0] === 'Thursday'){
-                        chart.series[0].data[3].y = parseInt(result[i][1]); 
-                        chart.redraw();
-                    } else if (result[i][0] === 'Tuesday'){
-                        chart.series[0].data[1].y = parseInt(result[i][1]);
-                        chart.redraw();
-                    } else if (result[i][0] === 'Wednesday'){
-                        chart.series[0].data[2].y = parseInt(result[i][1]);
-                        chart.redraw();
-                    } else {
-                        console.log("Cannot find array value");
+                    switch (result[i][0]){
+                        case 'Friday':
+                            chart.series[0].data[4].y = parseInt(result[i][1]);
+                            break;
+                        case 'Monday':
+                            chart.series[0].data[0].y = parseInt(result[i][1]);
+                            break;
+                        case 'Saturday':
+                            chart.series[0].data[5].y = parseInt(result[i][1]);
+                            break;
+                        case 'Sunday':
+                            chart.series[0].data[6].y = parseInt(result[i][1]); 
+                            break;
+                        case 'Thursday':
+                            chart.series[0].data[3].y = parseInt(result[i][1]);
+                            break;
+                        case 'Tuesday':
+                            chart.series[0].data[1].y = parseInt(result[i][1]);
+                            break;
+                        case 'Wednesday':
+                            chart.series[0].data[2].y = parseInt(result[i][1]);
+                            break;
+                        default:
+                            console.log("Finished switch case statement or there is an error")
                     }
+                    chart.redraw();
             }
             console.log("Finished loop");
         },
@@ -147,6 +165,47 @@ $(document).ready(function () {
                         y: 0,
                     }
                 ]
+            }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    console.log("Loading Chart")
+    timechart = new Highcharts.Chart({
+        chart: {
+        renderTo: "timecontainer",
+        type: "line",
+        events: {
+            
+        },
+        },
+        title: {
+            text: "Cas over time",
+        },
+        xAxis: {
+            
+        },
+        yAxis: {
+        title: {
+            text: 'Total Cas'
+        },
+        min: 0,
+        max: 20,
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+            }
+        },
+        series: [
+            {
+               
             }
         ]
     });
