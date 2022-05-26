@@ -3,7 +3,7 @@
 include("../connect.php");
 
 // Grabs the sum of Total Cas only for the current day
-$sql = "SELECT Month, SUM(TotalCas) AS 'TotalCas' from task3_crashes GROUP BY MONTH ORDER BY TotalCas DESC LIMIT 1";
+$sql = "SELECT Day, SUM(TotalCas) AS 'TotalCas' from task3_crashes GROUP BY Day ORDER BY TotalCas DESC LIMIT 1";
 
 $result = mysqli_query($conn, $sql);
 

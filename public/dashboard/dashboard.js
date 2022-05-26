@@ -37,13 +37,23 @@ $(document).ready(function(){
         url: "./dashboard/worstmonth.php",
         dataType: 'json',
         success: function(data){
-            console.log("Months: ", data);
-            for(var i=0; i < data.length; i++){
-                
-            }
+            console.log("Worst Month: ", data);
+            $("#highestmonth").append("<p>" + data[0][0] + ", " + data[0][1] + " CAS" + "</p>");
         },
         error: function(error){
             console.log(error.responseText);
+        }
+    })
+})
+
+$(document).ready(function(){
+    $.ajax({
+        type: "POST",
+        url: "./dashboard/worstday.php",
+        dataType: 'json',
+        success: function(data){
+            console.log("Worst Day: ", data);
+            $("#highestday").append("<p>" + data[0][0] + ", " + data[0][1] + " CAS" + "</p>");
         }
     })
 })
@@ -81,8 +91,8 @@ function updateTotalCas(){
                         default:
                             console.log("Finished switch case statement or there is an error")
                     }
-                    chart.redraw();
-            }
+                }
+            chart.redraw();
             console.log("Finished loop");
         },
             error: function(data){
@@ -91,7 +101,7 @@ function updateTotalCas(){
         });
 }
 $(document).ready(function () {
-    console.log("Loading Chart")
+    console.log("Loading Column Chart 1")
     chart = new Highcharts.Chart({
         chart: {
         renderTo: "container",
@@ -171,7 +181,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    console.log("Loading Chart")
+    console.log("Loading Line Chart 1")
     timechart = new Highcharts.Chart({
         chart: {
         renderTo: "timecontainer",
