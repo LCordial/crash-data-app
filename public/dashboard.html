@@ -38,8 +38,7 @@
                         <h3>Total Casualties Today</h3>
                     </div>
                     <div id="highestsuburb">
-                        <h3>Worst Suburb Today</h3>
-                        <p>[Enter number]</p>
+                        <h3>Other</h3>
                     </div>
                     <div id="highestmonth">
                         <h3>Worst Month</h3>
@@ -54,6 +53,36 @@
                 </div>
                 <div id="graphs">
                     <div id="container" style="width: 40vw; height: 50%;"></div>
+                        <div class="d-flex flex-row">
+                            <div id="flex-column">
+                                <p>Change the chart type</p>
+                                <select id="charttype">
+                                    <option value="" disabled selected class="form-select">Select your option</option>
+                                    <option value="column">Column</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="line">Line</option>
+                                </select>
+                            </div>
+                            <div id="flex-column">
+                                <p>Change the X Axis</p>
+                                <select id="xaxis">
+                                    <option value="" disabled selected class="form-select">Select your option</option>
+                                    <option value="Day">Day</option>
+                                    <option value="Month">Month</option>
+                                    <option value="Year">Year</option>
+                                </select>
+                            </div>
+                            <div id="flex-column">
+                                <p>Change the Y Axis</p>
+                                <select id="yaxis">
+                                    <option value="" disabled selected class="form-select">Select your option</option>
+                                    <option value="TotalCas">Total Cas</option>
+                                    <option value="TotalUnits">Total Units</option>
+                                    <option value="TotalSI">Total SI</option>
+                                </select>
+                            </div>
+                        </div>
+                    <button class="btn btn-primary" id="submit">Submit</button>
                     <div id="timecontainer" style="width: 40vw; height: 50%;"></div>
                 </div>
             </div>

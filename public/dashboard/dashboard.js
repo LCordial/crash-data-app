@@ -1,5 +1,5 @@
-var chart;
-var timechart;
+var daychart;
+var dynamicchart;
 var array = [];
 
 $(document).ready(function(){
@@ -58,6 +58,51 @@ $(document).ready(function(){
     })
 })
 
+$(document).ready(function(){
+    $("#submit").click(function(){
+        var charttype = $("#charttype").val();
+        var xaxisval = $("#xaxis").val();
+        var yaxisval = $("#yaxis").val();
+
+        console.log("Chart type:", charttype);
+        console.log("X-Axis: ", xaxisval);
+        console.log("Y-Axis: ", yaxisval);
+
+        dynamicchart.types = charttype;
+        dynamicchart.xAxis[0].setTitle({
+            text: xaxisval
+        });
+        dynamicchart.yAxis[0].setTitle({
+            text: yaxisval
+        });
+        dynamicchart.setTitle({
+            text: yaxisval + ' versus ' + xaxisval
+        });
+        dynamicchart.redraw();
+
+        var array = [xaxisval, yaxisval];
+
+        var jsonArray = JSON.stringify(array);
+        console.log(jsonArray);
+
+        $.ajax({
+            type: "POST",
+            url: "./dashboard/updategraph.php",
+            // data: {
+            //     "arg": xaxis
+            // },
+            dataType: 'json',
+            sucess: function(data){
+                console.log("Epic Data", data);
+                // dynamicchart.redraw();
+            },
+            error: function(data){
+                console.log("ERROR!: ", data.responseText);
+            }
+        })
+    })
+})
+
 function updateTotalCas(){
         $.ajax({
             type: "POST",
@@ -68,31 +113,31 @@ function updateTotalCas(){
                 for(var i = 0; i < result.length; i++){
                     switch (result[i][0]){
                         case 'Friday':
-                            chart.series[0].data[4].y = parseInt(result[i][1]);
+                            daychart.series[0].data[4].y = parseInt(result[i][1]);
                             break;
                         case 'Monday':
-                            chart.series[0].data[0].y = parseInt(result[i][1]);
+                            daychart.series[0].data[0].y = parseInt(result[i][1]);
                             break;
                         case 'Saturday':
-                            chart.series[0].data[5].y = parseInt(result[i][1]);
+                            daychart.series[0].data[5].y = parseInt(result[i][1]);
                             break;
                         case 'Sunday':
-                            chart.series[0].data[6].y = parseInt(result[i][1]); 
+                            daychart.series[0].data[6].y = parseInt(result[i][1]); 
                             break;
                         case 'Thursday':
-                            chart.series[0].data[3].y = parseInt(result[i][1]);
+                            daychart.series[0].data[3].y = parseInt(result[i][1]);
                             break;
                         case 'Tuesday':
-                            chart.series[0].data[1].y = parseInt(result[i][1]);
+                            daychart.series[0].data[1].y = parseInt(result[i][1]);
                             break;
                         case 'Wednesday':
-                            chart.series[0].data[2].y = parseInt(result[i][1]);
+                            daychart.series[0].data[2].y = parseInt(result[i][1]);
                             break;
                         default:
                             console.log("Finished switch case statement or there is an error")
                     }
                 }
-            chart.redraw();
+            daychart.redraw();
             console.log("Finished loop");
         },
             error: function(data){
@@ -102,7 +147,7 @@ function updateTotalCas(){
 }
 $(document).ready(function () {
     console.log("Loading Column Chart 1")
-    chart = new Highcharts.Chart({
+    daychart = new Highcharts.Chart({
         chart: {
         renderTo: "container",
         type: "column",
@@ -182,24 +227,26 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     console.log("Loading Line Chart 1")
-    timechart = new Highcharts.Chart({
+    dynamicchart = new Highcharts.Chart({
         chart: {
         renderTo: "timecontainer",
-        type: "line",
+        type: "",
         events: {
             
         },
         },
         title: {
-            text: "Cas over time",
+            text: "",
         },
         xAxis: {
-            
+            title: {
+                text: '',
+            },
         },
         yAxis: {
-        title: {
-            text: 'Total Cas'
-        },
+            title: {
+                text: '',
+            },
         min: 0,
         max: 20,
         },
